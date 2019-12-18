@@ -145,14 +145,22 @@ function getTickets() {
     fetch('https://inlupp-fa.azurewebsites.net/api/tickets')
     .then(res => res.json())              
     .then(data => {
-    
+
         for (let i = 0; i < data[1].tickets.length; i++) {
-    
+
+            let Clock = data[1].tickets[i].date.split(", ");
+
+            let initials = data[1].tickets[i].name.split(' ')[0][0] + data[1].tickets[i].name.split(' ')[1][0];
+
+            let myDate = data[1].tickets[i].date.split(' ')[0][0] + data[1].tickets[i].date.split(' ')[0][1] + " " + data[1].tickets[i].date.split(' ')[1][0] + data[1].tickets[i].date.split(' ')[1][1] + data[1].tickets[i].date.split(' ')[1][2]+ " " + data[1].tickets[i].date.split(' ')[2][0] + data[1].tickets[i].date.split(' ')[2][1] + data[1].tickets[i].date.split(' ')[2][2]+ data[1].tickets[i].date.split(' ')[2][3];
+
+            
+            
             ticket.insertAdjacentHTML('beforeend', `
                 <tr>
                 <td class="pl-0">
                 <div class="icon-rounded-primary icon-rounded-md">
-                    <h4 class="font-weight-medium">${data[1].tickets[i].name[0]}</h4>
+                    <h4 class="font-weight-medium">${initials}</h4>
                 </div>
                 </td>
                 <td>
@@ -160,7 +168,8 @@ function getTickets() {
                 <p class="text-muted mb-0">${data[1].tickets[i].city}</p>
                 </td>
                 <td>
-                <p class="mb-0">${data[1].tickets[i].date}</p>
+                <p class="mb-0">${myDate}</p>
+                <p class="text-muted mb-0">${Clock[1]}</p>
                 </td>
                 <td>
                 <p class="mb-0">${data[1].tickets[i].project}</p>
@@ -191,6 +200,7 @@ function getTickets() {
     let yearsButton = document.getElementById('yearsBtn');
 }
 // Tickets Ends here
+
 
 // Updates Starts here
 function getUpdates() {
