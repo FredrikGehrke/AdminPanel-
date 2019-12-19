@@ -149,12 +149,8 @@ function getTickets() {
         for (let i = 0; i < data[1].tickets.length; i++) {
 
             let Clock = data[1].tickets[i].date.split(", ");
-
             let initials = data[1].tickets[i].name.split(' ')[0][0] + data[1].tickets[i].name.split(' ')[1][0];
-
             let myDate = data[1].tickets[i].date.split(' ')[0][0] + data[1].tickets[i].date.split(' ')[0][1] + " " + data[1].tickets[i].date.split(' ')[1][0] + data[1].tickets[i].date.split(' ')[1][1] + data[1].tickets[i].date.split(' ')[1][2]+ " " + data[1].tickets[i].date.split(' ')[2][0] + data[1].tickets[i].date.split(' ')[2][1] + data[1].tickets[i].date.split(' ')[2][2]+ data[1].tickets[i].date.split(' ')[2][3];
-
-            
             
             ticket.insertAdjacentHTML('beforeend', `
                 <tr>
@@ -200,7 +196,6 @@ function getTickets() {
     let yearsButton = document.getElementById('yearsBtn');
 }
 // Tickets Ends here
-
 
 // Updates Starts here
 function getUpdates() {
@@ -288,12 +283,4 @@ function getOpenInvoices() {
     getUpdates();
     getDownloads();
     getOpenInvoices();
-
-
-    // Kvar att göra? :
-    // På tickets står det "T", inte "TL". Något man behöver fixa? 
-    // På tickets står det även tid i samma kolumn som datum. Det ligger där i API:n alltså ska det vara så? (Inte nedanför?)
-    // Distribution, samma färg?
-    // Behöver färger/bilder vara som innan? Ej gått igenom hur man gör detta. Då behöver man liksom
-    // byta ut innehållet i det innehållet som man... byter ut. hur? behöver man?
 
